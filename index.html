@@ -1,0 +1,10 @@
+{% extends "template.html" %}
+
+{% block title %}Home - Virtual Painter{% endblock %}
+
+{% block content %}
+<h3 class="mb-3 text-center">Utilisez vos doigts pour dessiner avec la caméra 🖐️</h3>
+<div class="text-center">
+    <img src="{{ url_for('video_feed') }}" width="720" height="480">
+</div>
+{% endblock %}
