@@ -3,8 +3,25 @@
 {% block title %}Home - Virtual Painter{% endblock %}
 
 {% block content %}
-<h3 class="mb-3 text-center">Utilisez vos doigts pour dessiner avec la caméra 🖐️</h3>
-<div class="text-center">
-    <img src="{{ url_for('video_feed') }}" width="720" height="480">
+<h3 class="mb-4 text-center">Utilisez vos doigts pour dessiner avec la caméra 🖐️</h3>
+
+<!-- Boutons pour changer la couleur ou activer l'effaceur -->
+<div class="text-center mb-3">
+    <button class="btn btn-danger mx-1" onclick="changeColor('red')">🔴 Rouge</button>
+    <button class="btn btn-success mx-1" onclick="changeColor('green')">🟢 Vert</button>
+    <button class="btn btn-primary mx-1" onclick="changeColor('blue')">🔵 Bleu</button>
+    <button class="btn btn-dark mx-1" onclick="changeColor('eraser')">🧽 Effaceur</button>
 </div>
+
+<!-- Flux vidéo en direct -->
+<div class="text-center">
+    <img src="{{ url_for('video_feed') }}" width="720" height="480" alt="Flux caméra">
+</div>
+
+<!-- JavaScript pour appeler le backend Flask -->
+<script>
+function changeColor(color) {
+    fetch(`/set_color/${color}`);
+}
+</script>
 {% endblock %}
